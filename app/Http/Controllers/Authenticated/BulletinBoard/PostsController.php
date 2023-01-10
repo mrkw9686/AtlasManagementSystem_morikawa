@@ -97,12 +97,28 @@ class PostsController extends Controller
     }
 
     public function postLike(Request $request){
-        Auth::user()->likes()->attach($request->post_id);
+        $user_id = Auth::id();
+        $post_id = $request->post_id;
+
+        $like = new Like;
+
+        $like->like_user_id = $user_id;
+        $like->like_post_id = $post_id;
+        $like->save();
+
         return response()->json();
     }
 
     public function postUnLike(Request $request){
-        Auth::user()->likes()->detach($request->post_id);
+        $user_id = Auth::id();
+        $post_id = $request->post_id;
+
+        $like = new Like;
+
+        $like->where('like_user_id', $user_id)
+             ->where('like_post_id', $post_id)
+             ->delete();
+
         return response()->json();
     }
 }

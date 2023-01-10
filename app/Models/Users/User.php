@@ -66,10 +66,6 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Models\Calendars\ReserveSettings', 'reserve_setting_users', 'user_id', 'reserve_setting_id')->withPivot('id');
     }
 
-    public function likes(){
-        return $this->belongsToMany('App\Models\Posts\Like', 'likes', 'like_user_id', 'like_post_id')->withPivot('id');
-    }
-
     public function subjects(){
         return ;// リレーションの定義
     }

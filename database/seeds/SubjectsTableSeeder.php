@@ -12,6 +12,10 @@ class SubjectsTableSeeder extends Seeder
      */
     public function run()
     {
-        // 国語、数学、英語を追加
+                DB::table('Subjects')->insert([
+['Subject'=>'国語'],
+['Subject'=>'数学'],
+['Subject'=>'英語']
+            ]);// 国語、数学、英語を追加
     }
 }

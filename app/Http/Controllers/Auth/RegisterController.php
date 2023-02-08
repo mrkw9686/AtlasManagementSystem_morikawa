@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use DB;
+use App\Http\Requests\RegisterFormRequest;
+
 
 use App\Models\Users\Subjects;
 
@@ -57,9 +59,9 @@ class RegisterController extends Controller
         return view('auth.register.register', compact('subjects'));
     }
 
-    public function registerPost(Request $request)
+    public function registerPost(RegisterFormRequest $request)
     {
-        DB::beginTransaction();
+                DB::beginTransaction();
         try{
             $old_year = $request->old_year;
             $old_month = $request->old_month;
@@ -82,6 +84,14 @@ class RegisterController extends Controller
             $user = User::findOrFail($user_get->id);
             $user->subjects()->attach($subjects);
             DB::commit();
+
+$errors = $request -> all();
+ if ($errors->fails()) {
+    return back()
+    ->withInput()
+    ->withErrors($errors);
+  }
+
             return view('auth.login.login');
         }catch(\Exception $e){
             DB::rollback();

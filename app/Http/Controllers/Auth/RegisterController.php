@@ -61,6 +61,8 @@ class RegisterController extends Controller
 
     public function registerPost(RegisterFormRequest $request)
     {
+
+
                 DB::beginTransaction();
         try{
             $old_year = $request->old_year;
@@ -85,17 +87,17 @@ class RegisterController extends Controller
             $user->subjects()->attach($subjects);
             DB::commit();
 
-$errors = $request -> all();
- if ($errors->fails()) {
-    return back()
-    ->withInput()
-    ->withErrors($errors);
-  }
 
-            return view('auth.login.login');
+    # code...
+    return view('auth.login.login');
+
+
+
         }catch(\Exception $e){
             DB::rollback();
             return redirect()->route('loginView');
         }
+
     }
+
 }

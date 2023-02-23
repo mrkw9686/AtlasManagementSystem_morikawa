@@ -58,6 +58,8 @@ $(function () {
     $('.edit-modal-hidden').val(post_id);
     return false;
   });
+
+
   $('.js-modal-close').on('click', function () {
     $('.js-modal').fadeOut();
     return false;

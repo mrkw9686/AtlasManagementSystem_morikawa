@@ -25,7 +25,7 @@ class PostFormRequest extends FormRequest
     {
         return [
             'post_title' => 'required|string|max:100',
-            'post_body' => 'required|string|max:500',
+            'post_body' => 'required|string|max:5000',
         ];
     }
 
@@ -37,7 +37,7 @@ class PostFormRequest extends FormRequest
 
             'post_body.required' => '内容は必ず指定してください。',
             'post_body.string' => '内容は文字列を指定してください。',
-            'post_body.max' => '内容は500文字以内で入力してください。',
+            'post_body.max' => '内容は5000文字以内で入力してください。',
         ];
     }
 }

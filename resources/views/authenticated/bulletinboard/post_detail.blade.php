@@ -7,16 +7,23 @@
         <div class="detail_inner_head">
           <div>
           </div>
+           @if (Auth::user()->id === $post->user_id)
           <div>
             <span class="edit-modal-open" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
             <a href="{{ route('post.delete', ['id' => $post->id]) }}" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')">削除</a>
           </div>
+          @endif
         </div>
-@foreach ($errors->all() as $error)
-<div class="error_message">
-  <tb>{{$error}}</tb>
-  </div>
-@endforeach
+@if ($errors->has('post_title'))
+  @foreach($errors->get('post_title') as $message)
+  <p class="error_message"> {{ $message }} </p>
+  @endforeach
+@endif
+@if ($errors->has('post_body'))
+  @foreach($errors->get('post_body') as $message)
+  <p class="error_message"> {{ $message }} </p>
+  @endforeach
+@endif
         <div class="contributor d-flex">
           <p>
             <span>{{ $post->user->over_name }}</span>
@@ -48,6 +55,11 @@
     <div class="comment_container border m-5">
       <div class="comment_area p-3">
         <p class="m-0">コメントする</p>
+@if ($errors->has('comment'))
+  @foreach($errors->get('comment') as $message)
+  <span class="error_message"> {{ $message }} </span>
+  @endforeach
+@endif
         <textarea class="w-100" name="comment" form="commentRequest"></textarea>
         <input type="hidden" name="post_id" form="commentRequest" value="{{ $post->id }}">
         <input type="submit" class="btn btn-primary" form="commentRequest" value="投稿">

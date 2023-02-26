@@ -9,6 +9,7 @@
       <p>カナ : <span>{{ $user->over_name_kana }}</span><span class="ml-1">{{ $user->under_name_kana }}</span></p>
       <p>性別 : @if($user->sex == 1)<span>男</span>@else<span>女</span>@endif</p>
       <p>生年月日 : <span>{{ $user->birth_day }}</span></p>
+      @if($user->role == 4)
       <div>選択科目 :
         @foreach($user->subjects as $subject)
         <span>{{ $subject->subject }}</span>
@@ -16,6 +17,7 @@
       </div>
       <div class="">
         @can('admin')
+
         <span class="subject_edit_btn">選択科目の編集</span>
         <div class="subject_inner">
           <form action="{{ route('user.edit') }}" method="post">
@@ -31,6 +33,7 @@
           </form>
         </div>
         @endcan
+@endif
       </div>
     </div>
   </div>

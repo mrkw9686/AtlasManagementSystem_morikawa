@@ -18,7 +18,7 @@ class SelectIdDetails implements DisplayUsers{
       $gender = array($gender);
     }
     if(is_null($role)){
-      $role = ['1', '2', '3', '4', '5'];
+      $role = ['1', '2', '3', '4','5'];
     }else{
       $role = array($role);
     }

@@ -4,6 +4,9 @@ namespace App\Models\Categories;
 
 use Illuminate\Database\Eloquent\Model;
 
+// use App\Models\Categories\MainCategory;
+
+
 class SubCategory extends Model
 {
     const UPDATED_AT = null;
@@ -12,11 +15,11 @@ class SubCategory extends Model
         'main_category_id',
         'sub_category',
     ];
-    public function mainCategory(){
-        return $this->belongsTo(subCategories::class);// リレーションの定義
+    public function MainCategory(){
+        return $this->belongsTo('App\Models\Categories\MainCategory');// リレーションの定義
     }
 
     public function posts(){
-        return $this->belongsToMany(subCategories::class, 'post_sub_categories', 'sub_category_id','post_id');// リレーションの定義
+        return $this->belongsToMany(post::class, 'post_sub_categories', 'sub_category_id','post_id');// リレーションの定義
     }
 }

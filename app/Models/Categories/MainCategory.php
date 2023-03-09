@@ -4,6 +4,8 @@ namespace App\Models\Categories;
 
 use Illuminate\Database\Eloquent\Model;
 
+// use App\Models\Categories\SubCategory;
+
 class MainCategory extends Model
 {
     const UPDATED_AT = null;
@@ -12,8 +14,8 @@ class MainCategory extends Model
         'main_category'
     ];
 
-    public function subCategories(){
-            return $this->hasMany(subCategories::class);// リレーションの定義
+    public function SubCategories(){
+            return $this->hasMany('App\Models\Categories\SubCategory');// リレーションの定義
     }
 
 }

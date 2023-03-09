@@ -8,7 +8,7 @@ class SelectNameDetails implements DisplayUsers{
   // 改修課題：選択科目の検索機能
   public function resultUsers($keyword, $category, $updown, $gender, $role, $subjects){
     if(is_null($gender)){
-      $gender = ['1', '2'];
+      $gender = ['1', '2','3'];
     }else{
       $gender = array($gender);
     }
@@ -29,7 +29,7 @@ class SelectNameDetails implements DisplayUsers{
       ->whereIn('role', $role);
     })
     ->whereHas('subjects', function($q) use ($subjects){
-      $q->where('subjects.id', $subjects);
+      $q->whereIn('subjects.id', $subjects);
     })
     ->orderBy('over_name_kana', $updown)->get();
     return $users;

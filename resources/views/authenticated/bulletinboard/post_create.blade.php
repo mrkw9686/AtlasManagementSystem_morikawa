@@ -9,8 +9,8 @@
         @foreach($main_categories as $main_category)
         <optgroup label="{{ $main_category->main_category }}"></optgroup>
         <!-- サブカテゴリー表示 -->
-        @foreach ($main_categories->SubCategories as $sub_category)
-      <li>{{ $sub_category->sub_category }}</li>
+        @foreach ($main_category->subCategories as $sub_category)
+      {{ $sub_category->sub_category }}
       @endforeach
         </optgroup>
         @endforeach

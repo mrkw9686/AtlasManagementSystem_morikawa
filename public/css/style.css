@@ -199,6 +199,7 @@ color:transparent;
   border:none;
   background:#999;
   color:#FFF;
+  display: inline-block;
 }
 .main_categories span,
 .sub_categories li input{

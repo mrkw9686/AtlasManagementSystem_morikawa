@@ -9,7 +9,11 @@
       <p><span>{{ $post->user->over_name }}</span><span class="ml-3">{{ $post->user->under_name }}</span>さん</p>
       <p><a href="{{ route('post.detail', ['id' => $post->id]) }}">{{ $post->post_title }}</a></p>
       <div class="post_bottom_area d-flex">
-      <p class="category_btn">{{ $post->sub_category}}</p>
+        <div>
+@foreach($post->subCategories as $sub_category)
+      <span class="category_btn">{{ $sub_category}}</span>
+@endforeach
+</div>
         <div class="d-flex post_status">
           <div class="mr-5">
             <i class="fa fa-comment"></i><span class="comment_counts{{ $post->id }}">{{ $post_comment->commentCounts($post->id)}}</span>

@@ -17,7 +17,7 @@ use Auth;
 class PostsController extends Controller
 {
     public function show(Request $request){
-        $posts = Post::with('user', 'postComments')->get();
+        $posts = Post::with('user', 'postComments','subCategories')->get();
         $categories = MainCategory::get();
         $like = new Like;
         $post_comment = new Post;
@@ -50,11 +50,14 @@ class PostsController extends Controller
     }
 
     public function postCreate(PostFormRequest $request){
-        $post = Post::create([
+        $sub_category = $request->sub_category;
+        $post_get = Post::create([
             'user_id' => Auth::id(),
             'post_title' => $request->post_title,
             'post' => $request->post_body
         ]);
+            $post = post::findOrFail($post_get->id);
+            $post->subCategories()->attach($sub_category);
         return redirect()->route('post.show');
     }
 

@@ -24,20 +24,22 @@ class SubCategoryFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'sub_category_name' => 'required|string|max:100',
-            'main_category_id' => 'required|string|max:5000',
+            'sub_category_name' => 'required|string|max:100|unique:sub_categories,sub_category',
+            'main_category_id' => 'required|exists:main_categories,main_category',
+
         ];
 
     }
 
     public function messages(){
         return [
-            'sub_category_name.required' => 'メインカテゴリーは必ず指定してください。',
-            'sub_category_name.string' => 'メインカテゴリーは文字列を指定してください。',
-            'sub_category_name.max' => 'メインカテゴリーは100文字以内で入力してください。',
+            'sub_category_name.required' => 'サブカテゴリーは必ず指定してください。',
+            'sub_category_name.string' => 'サブカテゴリーは文字列を指定してください。',
+            'sub_category_name.max' => 'サブカテゴリーは100文字以内で入力してください。',
+            'sub_category_name.unique' => '同じ名前のサブカテゴリーは登録できません。',
 
-            'main_category_id' => '内容は必ず指定してください。',
-            'main_category_id' => '内容は文字列を指定してください。',
+            'main_category_id.required' => 'メインカテゴリーは必ず指定してください。',
+            'main_category_id.exists' => 'このメインカテゴリーは登録されてません。'
         ];
     }
 }

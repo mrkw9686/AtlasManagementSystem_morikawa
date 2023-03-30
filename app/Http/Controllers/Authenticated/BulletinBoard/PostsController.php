@@ -12,6 +12,9 @@ use App\Models\Posts\Like;
 use App\Models\Users\User;
 use App\Http\Requests\BulletinBoard\PostFormRequest;
 use App\Http\Requests\BulletinBoard\postCommentsFormRequest;
+use App\Http\Requests\SubCategoryFormRequest;
+use App\Http\Requests\MainCategoryFormRequest;
+
 use Auth;
 
 class PostsController extends Controller
@@ -27,7 +30,10 @@ class PostsController extends Controller
             ->orWhere('post', 'like', '%'.$request->keyword.'%')->get();
         }else if($request->category_word){
             $sub_category = $request->category_word;
-            $posts = Post::with('user', 'postComments')->get();
+            $posts = Post::with('user', 'postComments')
+            ->whereHas('subCategories',
+            function ($q) use($sub_category) {$q
+                ->where('sub_category', 'like', '%'.$sub_category.'%');})->get();
         }else if($request->like_posts){
             $likes = Auth::user()->likePostId()->get('like_post_id');
             $posts = Post::with('user', 'postComments')
@@ -50,13 +56,13 @@ class PostsController extends Controller
     }
 
     public function postCreate(PostFormRequest $request){
-        $sub_category = $request->sub_category;
+        $sub_category = $request->post_category_id;
         $post_get = Post::create([
             'user_id' => Auth::id(),
             'post_title' => $request->post_title,
             'post' => $request->post_body
         ]);
-            $post = post::findOrFail($post_get->id);
+            $post = Post::findOrFail($post_get->id);
             $post->subCategories()->attach($sub_category);
         return redirect()->route('post.show');
     }
@@ -73,15 +79,15 @@ class PostsController extends Controller
         Post::findOrFail($id)->delete();
         return redirect()->route('post.show');
     }
-    public function mainCategoryCreate(Request $request){
+    public function mainCategoryCreate(MainCategoryFormRequest $request){
         MainCategory::create(['main_category' => $request->main_category_name]);
         return redirect()->route('post.input');
     }
 
-    public function subCategoryCreate(Request $request){
+    public function subCategoryCreate(SubCategoryFormRequest $request){
         SubCategory::create([
         'main_category_id'=>$request->main_category_id,
-            'sub_category' => $request->sub_category_name]);
+        'sub_category' => $request->sub_category_name]);
         return redirect()->route('post.input');
     }
 
@@ -94,13 +100,20 @@ class PostsController extends Controller
         return redirect()->route('post.detail', ['id' => $request->post_id]);
     }
 
-    public function myBulletinBoard(){
-        $posts = Auth::user()->posts()->get();
-        $like = new Like;
-        return view('authenticated.bulletinboard.post_myself', compact('posts', 'like'));
-    }
+    // public function myBulletinBoard(){
+    //     $posts = Auth::user()->posts()->get();
+    //     $like = new Like;
+    //     return view('authenticated.bulletinboard.post_myself', compact('posts', 'like'));
+    // }
 
-    public function likeBulletinBoard(){
+    // public function likeBulletinBoard(){
+    //     $like_post_id = Like::with('users')->where('like_user_id', Auth::id())->get('like_post_id')->toArray();
+    //     $posts = Post::with('user')->whereIn('id', $like_post_id)->get();
+    //     $like = new Like;
+    //     return view('authenticated.bulletinboard.post_like', compact('posts', 'like'));
+    // }
+
+    public function categoryBulletinBoard(){
         $like_post_id = Like::with('users')->where('like_user_id', Auth::id())->get('like_post_id')->toArray();
         $posts = Post::with('user')->whereIn('id', $like_post_id)->get();
         $like = new Like;

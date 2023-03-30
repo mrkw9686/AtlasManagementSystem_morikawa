@@ -24,21 +24,17 @@ class MainCategoryFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'post_title' => 'required|string|max:100',
-            'post_body' => 'required|string|max:5000',
+            'main_category_name' => 'required|string|max:100|unique:main_categories,main_category'
         ];
 
     }
 
     public function messages(){
         return [
-            'post_title.required' => 'タイトルは必ず指定してください。',
-            'post_title.string' => 'タイトルは文字列を指定してください。',
-            'post_title.max' => 'タイトルは100文字以内で入力してください。',
-
-            'post_body.required' => '内容は必ず指定してください。',
-            'post_body.string' => '内容は文字列を指定してください。',
-            'post_body.max' => '内容は5000文字以内で入力してください。',
+            'main_category_name.required' => 'メインカテゴリーは必ず指定してください。',
+            'main_category_name.string' => 'メインカテゴリーは文字列を指定してください。',
+            'main_category_name.max' => 'メインカテゴリーは100文字以内で入力してください。',
+            'main_category_name.unique' => '同じ名前のメインカテゴリーは登録できません。'
         ];
     }
 }

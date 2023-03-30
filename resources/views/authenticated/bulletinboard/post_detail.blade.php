@@ -6,7 +6,10 @@
       <div class="p-3">
         <div class="detail_inner_head">
           <div>
-          </div>
+@foreach($post->subCategories as $sub_category)
+      <span class="category_btn">{{ $sub_category->sub_category}}</span>
+@endforeach
+</div>
            @if (Auth::user()->id === $post->user_id)
           <div>
             <span class="edit-modal-open" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>

@@ -11,7 +11,7 @@
       <div class="post_bottom_area d-flex">
         <div>
 @foreach($post->subCategories as $sub_category)
-      <span class="category_btn">{{ $sub_category}}</span>
+      <span class="category_btn">{{ $sub_category->sub_category}}</span>
 @endforeach
 </div>
         <div class="d-flex post_status">
@@ -43,7 +43,7 @@
         @foreach($categories as $category)
         <li class="main_categories" category_id="{{ $category->id }}"><span>{{ $category->main_category }}<span></li>
                 @foreach ($category->subCategories as $sub_category)
-      <li class="category_btn">{{ $sub_category->sub_category }}</li>
+      <li> <input type="submit" class="category_btn" name="category_word" value="{{ $sub_category->sub_category }}" form="postSearchRequest" ></li>
       <li></li>
       @endforeach
         @endforeach

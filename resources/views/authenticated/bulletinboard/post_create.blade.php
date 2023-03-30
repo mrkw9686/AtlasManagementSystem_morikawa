@@ -10,7 +10,7 @@
         <optgroup label="{{ $main_category->main_category }}"></optgroup>
         <!-- サブカテゴリー表示 -->
         @foreach ($main_category->subCategories as $sub_category)
-      <option form="postCreate">{{ $sub_category->sub_category }}</option>
+      <option form="postCreate" value="{{ $sub_category -> id }}">{{ $sub_category->sub_category }}</option>
       @endforeach
         </optgroup>
         @endforeach
@@ -39,16 +39,31 @@
   <div class="w-25 ml-auto mr-auto">
     <div class="category_area mt-5 p-5">
       <div class="">
+              @if ($errors->has('main_category_name'))
+  @foreach($errors->get('main_category_name') as $message)
+  <p class="error_message"> {{ $message }} </p>
+  @endforeach
+@endif
         <p class="m-0">メインカテゴリー</p>
         <input type="text" class="w-100" name="main_category_name" form="mainCategoryRequest">
         <input type="submit" value="追加" class="w-100 btn btn-primary p-0" form="mainCategoryRequest">
       </div>
       <form action="{{ route('main.category.create') }}" method="post" id="mainCategoryRequest">{{ csrf_field() }}</form>
       <!-- サブカテゴリー追加 -->
+      @if ($errors->has('sub_category_name'))
+  @foreach($errors->get('sub_category_name') as $message)
+  <p class="error_message"> {{ $message }} </p>
+  @endforeach
+@endif
+      @if ($errors->has('main_category_id'))
+  @foreach($errors->get('main_category_id') as $message)
+  <p class="error_message"> {{ $message }} </p>
+  @endforeach
+@endif
       <p class="m-0">サブカテゴリー</p>
       <select class="w-100" name="main_category_id" form="subCategoryRequest">
       @foreach($main_categories as $main_category )
-        <option value="{{ $main_category -> id }}">{{$main_category -> main_category }}</option>
+        </option> value="{{ $main_category -> id }}">{{$main_category -> main_category }}</option>
       @endforeach
       </select>
         <input type="text" class="w-100" name="sub_category_name" form="subCategoryRequest">

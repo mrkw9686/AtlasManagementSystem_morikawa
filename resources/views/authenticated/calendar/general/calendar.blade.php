@@ -18,11 +18,16 @@
   <div class="modal__bg js-modal-close"></div>
   <div class="modal__content">
       <div class="w-100">
-        <div class="modal-inner-title w-50 m-auto"　name="reservePart">
+        <!-- <div class=" w-50 m-auto"> -->
+          <!-- <p class="modal-inner-delete_Part"></p>
+       <input type="hidden" class="modal-inner-delete_Part" name="delete_Part" value="delete_Part">
+        </div> -->
+        <!-- <div class="modal-inner-body w-50 m-auto pt-3 pb-3"　name="delete_date">
           jjj
-        </div>
-        <div class="modal-inner-body w-50 m-auto pt-3 pb-3"　name="delete_date">
-          jjj
+        </div> -->
+      <div class=" modal-inner-delete_date">
+        <span></span>
+       <!-- <input type="hidden" class="modal-inner-delete_date" name="delete_date" value="delete_date"> -->
         </div>
         <div class="w-50 m-auto edit-modal-btn d-flex">
           <a class="js-modal-close btn btn-danger d-inline-block" href="">閉じる</a>

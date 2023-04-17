@@ -41,22 +41,13 @@ class CalendarsController extends Controller
 
     public function delete(Request $request)
     {
-        dd($request);
+        // dd($request);
         DB::beginTransaction();
         try {
             $delete_date = $request->delete_date;
-            $reservePart = $request->reservePart;
-           if ($reservePart == "リモ1部" ) {
-            $reservePart = 1;
-          }
-          else if ($reservePart == "リモ2部") {
-            $reservePart = 2;
-          }
-            else if ($reservePart == "リモ3部") {
-                $reservePart = 3;
-            }
-
-            $reserve_settings = ReserveSettings::where('setting_reserve', $delete_date)->where('setting_part', $reservePart)->first();
+            // $reservePart = $request->reservePart;
+            $reserve_settings = ReserveSettings::where('setting_reserve', $delete_date)->first();
+            // ->where('delete_Part', $reservePart)
             $reserve_settings->increment('limit_users');
             $reserve_settings->users()->detach(Auth::id());
             DB::commit();

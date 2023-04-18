@@ -69,8 +69,8 @@ class CalendarView
           }
           else { // ログインユーザー予約している場合で過去日でない場合
             $html[] = '<button type="submit" class="btn btn-danger p-0 w-75 delete-modal-open" name="delete_date" style="font-size:12px" value="' . $day->authReserveDate($day->everyDay())->first()->setting_reserve . '" >' . $reservePart . '</button>';
-            $html[] = '<input type="hidden"　name="delete_Part" value="' . $reservePart . '" >';
-            $html[] = '<input type="hidden" name="getPart[]" value="'.$reservePart.'" form="reserveParts">';
+            $html[] = '<input type="hidden" id="delete-modal" name="delete_Part" value="' . $reservePart . '" >';
+            $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
 
           }
         }

@@ -1,13 +1,13 @@
 $(function(){
 $('.delete-modal-open').on('click',function(){
     $('.js-modal').fadeIn();
-  // var delete_Part = $(this).attr(value);
-  var delete_date = $(this).attr(delete_date);
-  // $('.modal-inner-delete_Part').text(delete_Part);
-  // $('.modal-inner-delete_Part').val(delete_Part);
-    $('.modal-inner-delete_date span').text(delete_date);
-    // $('.modal-inner-delete_date').val(delete_date);
-console.log(delete_date)
+  var delete_Part = $('#delete-modal').val();
+  var delete_date = $(this).val();
+  $('.modal-inner-delete_Part span').text("時間:"+delete_Part);
+  $('.modal-inner-delete_Part input').val(delete_Part);
+    $('.modal-inner-delete_date span').text("予約日:"+delete_date);
+  $('.modal-inner-delete_date input').val(delete_date);
+  
     return false;
   });
 

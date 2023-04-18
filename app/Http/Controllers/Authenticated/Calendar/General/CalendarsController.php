@@ -42,19 +42,33 @@ class CalendarsController extends Controller
     public function delete(Request $request)
     {
         // dd($request);
-        DB::beginTransaction();
-        try {
+        // DB::beginTransaction();
+        // try {
             $delete_date = $request->delete_date;
-            // $reservePart = $request->reservePart;
-            $reserve_settings = ReserveSettings::where('setting_reserve', $delete_date)->first();
-            // ->where('delete_Part', $reservePart)
+            $reservePart = $request->delete_Part;
+// dd($reservePart);
+        if ($reservePart == "リモ1部") {
+            $reservePart = 1;
+        }
+        else if ($reservePart == "リモ2部") {
+            $reservePart = 2;
+        }
+        else if ($reservePart == "リモ3部") {
+            $reservePart = 3;
+        }
+// dd($delete_date);
+// dd($reservePart);
+
+            $reserve_settings = ReserveSettings::where('setting_reserve', $delete_date)->where('setting_part', $reservePart)->first();
+
+dd($reserve_settings);
             $reserve_settings->increment('limit_users');
             $reserve_settings->users()->detach(Auth::id());
-            DB::commit();
-        }
-        catch (\Exception $e) {
-            DB::rollback();
-        }
+        //     DB::commit();
+        // }
+        // catch (\Exception $e) {
+        //     DB::rollback();
+        // }
         return redirect()->route('calendar.general.show', ['user_id' => Auth::id()]);
     }
 }

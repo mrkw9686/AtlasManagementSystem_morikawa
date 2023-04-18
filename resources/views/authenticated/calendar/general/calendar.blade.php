@@ -18,20 +18,19 @@
   <div class="modal__bg js-modal-close"></div>
   <div class="modal__content">
       <div class="w-100">
-        <!-- <div class=" w-50 m-auto"> -->
-          <!-- <p class="modal-inner-delete_Part"></p>
-       <input type="hidden" class="modal-inner-delete_Part" name="delete_Part" value="delete_Part">
-        </div> -->
-        <!-- <div class="modal-inner-body w-50 m-auto pt-3 pb-3"　name="delete_date">
-          jjj
-        </div> -->
-      <div class=" modal-inner-delete_date">
+      <div class="w-50 m-auto modal-inner-delete_date">
         <span></span>
-       <!-- <input type="hidden" class="modal-inner-delete_date" name="delete_date" value="delete_date"> -->
+       <input type="hidden" class="modal-inner-delete_date" name="delete_date" value="delete_date" form="deleteParts">
         </div>
+        <div class=" w-50 m-auto modal-inner-delete_Part">
+        <span></span>
+        <input type="hidden" class="modal-inner-delete_Part" name="delete_Part" value="delete_Part" form="deleteParts">
+        </div>
+
+        <span>上記の予約をキャンセルしてもよろしいですか？</span>
         <div class="w-50 m-auto edit-modal-btn d-flex">
-          <a class="js-modal-close btn btn-danger d-inline-block" href="">閉じる</a>
-                  <input type="submit" class="btn btn-primary d-block " value="キャンセル">
+          <a class="js-modal-close btn btn-primary d-inline-block" href="">閉じる</a>
+                  <input type="submit" class="btn btn-danger d-block " form="deleteParts" value="キャンセル">
         </div>
       </div>
   </div>

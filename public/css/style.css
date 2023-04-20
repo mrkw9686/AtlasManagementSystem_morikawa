@@ -89,6 +89,12 @@ li{
     transform: translate(-50%,-50%);
     width: 60%;
 }
+.delete-modal{
+  text-align:left;
+}
+.delete-modal-padding{
+  padding-bottom: 3%;
+}
 
 /* 掲示板 */
 .sub_categories{

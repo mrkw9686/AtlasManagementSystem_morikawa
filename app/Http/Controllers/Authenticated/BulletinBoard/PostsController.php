@@ -100,18 +100,18 @@ class PostsController extends Controller
         return redirect()->route('post.detail', ['id' => $request->post_id]);
     }
 
-    // public function myBulletinBoard(){
-    //     $posts = Auth::user()->posts()->get();
-    //     $like = new Like;
-    //     return view('authenticated.bulletinboard.post_myself', compact('posts', 'like'));
-    // }
+    public function myBulletinBoard(){
+        $posts = Auth::user()->posts()->get();
+        $like = new Like;
+        return view('authenticated.bulletinboard.post_myself', compact('posts', 'like'));
+    }
 
-    // public function likeBulletinBoard(){
-    //     $like_post_id = Like::with('users')->where('like_user_id', Auth::id())->get('like_post_id')->toArray();
-    //     $posts = Post::with('user')->whereIn('id', $like_post_id)->get();
-    //     $like = new Like;
-    //     return view('authenticated.bulletinboard.post_like', compact('posts', 'like'));
-    // }
+    public function likeBulletinBoard(){
+        $like_post_id = Like::with('users')->where('like_user_id', Auth::id())->get('like_post_id')->toArray();
+        $posts = Post::with('user')->whereIn('id', $like_post_id)->get();
+        $like = new Like;
+        return view('authenticated.bulletinboard.post_like', compact('posts', 'like'));
+    }
 
     public function categoryBulletinBoard(){
         $like_post_id = Like::with('users')->where('like_user_id', Auth::id())->get('like_post_id')->toArray();

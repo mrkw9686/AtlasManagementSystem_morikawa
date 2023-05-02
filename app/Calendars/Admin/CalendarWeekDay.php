@@ -36,11 +36,11 @@ class CalendarWeekDay{
 1部 </a></p>';
     }
     if($two_part){
-      $html[] = '<p class="day_part m-0 pt-1"><a href="/calendar/' . Auth::id() . '/' . $ymd . '/2">
+      $html[] = '<p class="day_part m-0 pt-1"><a href="/calendar/'.Auth::id().'/'.$ymd.'/2">
 2部 </a></p>';
     }
     if($three_part){
-      $html[] = '<p class="day_part m-0 pt-1"><a href="/calendar/' . Auth::id() . '/' . $ymd . '/3">
+      $html[] = '<p class="day_part m-0 pt-1"><a href="/calendar/'.Auth::id().'/'.$ymd.'/3">
 3部 </a></p>';
     }
     $html[] = '</div>';

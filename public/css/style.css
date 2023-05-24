@@ -3,6 +3,25 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+font-family: 'メイリオ', Meiryo,sans-serif;
+}
+.login-body{
+  background-color: #F1F7FE !important;
+}
+.top{
+  width:30%;
+}
+.login-border{
+background-color: #FFF;
+border-radius: 10px;
+box-shadow:#00000036 5px 5px 10px;
+}
+.logo{
+  color:black;
+      width: 40%;
+    height: auto;
+    display: block;
+    margin: 0 auto 40px;
 }
 /* body */
 .all_content{
@@ -15,7 +34,7 @@ li{
 
 /* サイドバー */
 .sidebar{
-  width:150px;
+  width:230px;
   height:100vh;
   background-color:#03AAD2;
   font-weight:bold;
@@ -26,8 +45,16 @@ li{
 .sidebar p a{
   color:#FFF;
 }
+.sidebar-inner{
+  margin: 10%;
+}
+.sidebar-inner i{
+  padding-right: 5px;
+}
 
 /* トップページ */
+
+
 .user_status{
   border-radius:10px;
   background:#FFF;
@@ -64,6 +91,45 @@ li{
 }
 .adjust-table-btn{
   width:70%;
+}
+
+.table-title th{
+  background-color: #1ad3ff;
+  color: #FFF;
+}
+
+.StripeTable{
+border-radius:5px;
+outline:solid 5px #FFF;
+box-shadow:#00000036 5px 5px 10px;
+}
+
+.StripeTable tr:nth-child(odd) {
+  background-color:#c0efff ;
+}
+
+.StripeTable tr:nth-child(even) {
+  background-color:#fff;
+}
+
+.Saturday{
+  color: #0000FF;
+}
+
+.Sunday{
+  color: #FF0000;
+}
+
+.adjust-table-boder{
+background-color: #FFF;
+border-radius:10px;
+box-shadow:#00000036 5px 5px 10px;
+}
+
+.adjust-table-Title{
+text-align: center;
+padding: 5px ;
+margin-top: 20px;
 }
 
 /* モーダル */
@@ -139,6 +205,20 @@ color:transparent;
   white-space: nowrap;
 }
 
+.post-btn{
+    background: #00B4DB !important;
+    border-color: #00B4DB !important;
+        color: #fff !important;
+}
+.post-search-btn{
+    background: #00B4DB !important;
+    border-color: #00B4DB !important;
+        color: #fff !important;
+        height: 40px;
+    margin-bottom: 3px;
+width: 23%;
+}
+
 /* 掲示板 詳細画面 */
 .contributor{
   font-size:12px;
@@ -203,14 +283,40 @@ color:transparent;
   border-radius:5px;
   padding:0 5px;
   border:none;
-  background:#999;
+  background:#00B4DB;
   color:#FFF;
   display: inline-block;
 }
+
+
 .main_categories span,
 .sub_categories li input{
   list-style:none;
   cursor:pointer;
+}
+
+.good_btn{
+    background: #e17397;
+    width: 45%;
+    height: 30px;
+}
+
+.my_btn{
+    background: #eeb12e;
+    width: 45%;
+    height: 30px;
+    margin-left: 20px;
+}
+
+.post-search{
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  width: 75%;
+  height: 40px;
+}
+
+.search-category{
+margin: 5%;
 }
 
 /* ユーザー検索 */
@@ -222,7 +328,6 @@ color:transparent;
   height:80vh;
   overflow: scroll;
   padding:10px;
-  background:#FFF;
   border-radius:5px;
 }
 .reserve_users_area span{
@@ -234,16 +339,109 @@ color:transparent;
 }
 .search_conditions span{
   cursor:pointer;
+
 }
-.search_conditions_inner{
-  display:none;
-  background:#FFF;
-}
+
 .subject_edit_btn{
   font-size:12px;
   color:#0000FF;
   cursor:pointer;
 }
+
+
 .subject_inner{
   display:none;
+}
+
+.saech-accordion-title {
+  position: relative;
+}
+.saech-accordion-title::after {
+  border-right: solid 2px #494949;
+  border-top: solid 2px #494949;
+  content: "";
+  display: block;
+  height: 8px;
+  position: absolute;
+  right: 60%;
+  top: 38%;
+  transform: rotate(135deg);
+  transition: transform .3s ease-in-out, top .3s ease-in-out;
+  width: 8px;
+}
+.saech-accordion-title.open::after {
+  top: 45%;
+  transform: rotate(-45deg);
+}
+
+.profile-accordion-title {
+  position: relative;
+}
+.profile-accordion-title::after {
+  border-right: solid 2px #494949;
+  border-top: solid 2px #494949;
+  content: "";
+  display: block;
+  height: 8px;
+  position: absolute;
+  right: 83%;
+  top: 38%;
+  transform: rotate(135deg);
+  transition: transform .3s ease-in-out, top .3s ease-in-out;
+  width: 8px;
+}
+.profile-accordion-title.open::after {
+  top: 45%;
+  transform: rotate(-45deg);
+}
+
+.edit-sabject{
+  font-size: 20px;
+  color: #1ad3ff;
+}
+
+/* 投稿機能アコーディオン */
+
+.accordion-single  {
+  margin-top: 10px;
+}
+
+.accordion-single-title {
+  border-bottom: 1px solid #494949;
+  padding-left: 5px;
+  cursor: pointer;
+  position: relative;
+  margin-bottom: 5%;
+}
+
+.accordion-single-title::after{
+  content: "";
+  position: absolute;
+  right: 25px;
+  top: 50%;
+  transition: all 0.2s ease-in-out;
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-top: solid 2px #999;
+  border-right: solid 2px #999;
+  transform: translateY(-50%) rotate(135deg);
+}
+
+.accordion-single-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .3s ease-in-out;
+}
+
+.accordion-single-content p {
+  padding: 20px;
+}
+
+.accordion-single-item.is-open .accordion-single-content  {
+  max-height: 150px;
+}
+
+.accordion-single-item.is-open .accordion-single-title::after  {
+  transform: translateY(-50%) rotate(315deg);
 }

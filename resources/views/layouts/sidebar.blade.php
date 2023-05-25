@@ -13,6 +13,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Oswald:wght@200&display=swap" rel="stylesheet">
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<script src="https://kit.fontawesome.com/d70d9edbcf.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </head>
 
@@ -42,7 +43,6 @@
   <script src="{{ asset('js/bulletin.js') }}" rel="stylesheet"></script>
   <script src="{{ asset('js/user_search.js') }}" rel="stylesheet"></script>
   <script src="{{ asset('js/calendar.js') }}" rel="stylesheet"></script>
-  <script src="https://kit.fontawesome.com/d70d9edbcf.js" crossorigin="anonymous"></script>
 
 </body>
 </html>

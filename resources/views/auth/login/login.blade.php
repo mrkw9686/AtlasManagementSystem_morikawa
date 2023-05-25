@@ -19,7 +19,7 @@
     <div class="w-100 vh-100 d-flex" style="align-items:center; justify-content:center;">
        <div class="top">
        <div class="logo">
-         <img src="imge/atlas-black.png" width="180" >
+         <img src="{{asset('imge/atlas-black.png')}}" width="180" >
          </div>
       <div class="border login-border vh-50 w-100">
         <div class="w-75 m-auto pt-5">
